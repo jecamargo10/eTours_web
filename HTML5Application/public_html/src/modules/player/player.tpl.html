@@ -1,0 +1,69 @@
+<div ng-controller="playerCtrl as playerCtrl">
+	<div id="header">
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#country-navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Player</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="country-navbar">
+					<button class="btn btn-default navbar-btn" ng-hide="playerCtrl.editMode" ng-click="playerCtrl.createRecord()"><span class="glyphicon glyphicon-plus"></span> Create</button>
+					<button class="btn btn-default navbar-btn" ng-hide="playerCtrl.editMode" ng-click="playerCtrl.fetchRecords()"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
+					<button class="btn btn-default navbar-btn" ng-show="playerCtrl.editMode" ng-click="playerCtrl.saveRecord()"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+					<button class="btn btn-default navbar-btn" ng-show="playerCtrl.editMode" ng-click="playerCtrl.fetchRecords()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                                        <button class="btn btn-default navbar-btn" ng-show="playerCtrl.editMode" ng-click="playerCtrl.fetchRecords()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                                        <button class="btn btn-default navbar-btn" ng-hide="playerCtrl.editMode" ng-click="playerCtrl.maxRecord()"><span class="glyphicon glyphicon-refresh"></span> Max</button>
+                                        <label  ng-show="showMax">{{currentRecords}}</label>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<div ng-hide="playerCtrl.editMode">
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Age</th>
+                                        <th>Sport</th>
+					<th>Actions</th>                                      
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="record in records">
+					<td>{{record.name}}</td>
+					<td>{{record.age}}</td>
+                                        <td>{{record.sport}}</td>
+					<td>
+						<button class="btn btn-default btn-sm" ng-click="playerCtrl.editRecord(record)"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+						<button class="btn btn-default btn-sm" ng-click="playerCtrl.deleteRecord(record)"><span class="glyphicon glyphicon-minus"></span> Delete</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div ng-show="playerCtrl.editMode">
+		<form name="countryForm" role="form">
+			<input id="name" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input id="name" class="form-control" type="text" ng-model="currentRecord.name"/>
+			</div>
+			<div class="form-group">
+				<label for="age">Age</label>
+				<input id="age" class="form-control" type="number" ng-model="currentRecord.age"/>
+			</div>
+			<div class="form-group">
+				<label for="sport">Sport</label>
+				<input id="sport" class="form-control" type="text" ng-model="currentRecord.sport"/>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link href="src/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<script src="src/assets/libs/jquery-1.11.2.min.js"></script>
+		<script src="src/assets/libs/underscore-min.js"></script>
+		<script src="src/assets/libs/angular.min.js"></script>
+		<script src="src/assets/libs/angular-mocks.js"></script>
+		<script src="src/assets/libs/angular-route.min.js"></script>
+		<script src="src/assets/libs/restangular.min.js"></script>
+
+		<script src="src/app.js"></script>
+
+		<script src="src/shared/crud/crud.mod.js"></script>
+		<script src="src/shared/crud/crud.svc.js"></script>
+		<script src="src/shared/mocks/mock.mod.js"></script>
+		<script src="src/shared/mocks/mock.svc.js"></script>
+
+		<script src="src/modules/sport/sport.ctrl.js"></script>
+                <script src="src/modules/player/player.ctrl.js"></script>
+    </head>
+    <body>
+		<div class="container">
+			<div class="col-md-2">
+				<ul class="nav nav-pills nav-stacked">
+					<li><a href="#/player">Player</a></li>
+				</ul>
+			</div>
+                        <div class="col-md-2">
+				<ul class="nav nav-pills nav-stacked">
+					<li><a href="#/sport">Sport</a></li>
+				</ul>
+			</div>
+			<div class="col-md-10">
+				<div ng-view></div>
+			</div>
+		</div>
+	</body>
+</html>
